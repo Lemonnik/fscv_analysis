@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Home page</title>
+    </head>
+
+    <body>
+        <h1 align='center'>DA calculations</h1>
+
+        
+
+            <div class="row mb-3">
+                <div class="col-2"><b>phi2:</b></div>
+                <div class="col-10"><input type="text" name="SomeData"></div>
+            </div>
+
+
+
+
+
+
+        <form method="POST" action="/submit" enctype="multipart/form-data">
+        <div class="container" style="border: 2px solid; max-width: 700px; padding: 20px;">
+            <div class="row mb-3">
+                <div class="col-2"><b>Upload file:</b></div>
+                <div class="col-10">
+                    <input type="file" name="daFile" placeholder="Upload your DA file here">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-12"><input type="submit" name="Submit"></div>
+            </div>
+
+        </div>
+        </form>
+        
+
+        <div>
+            {{data}}    
+        </div>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </body>
+</html>
