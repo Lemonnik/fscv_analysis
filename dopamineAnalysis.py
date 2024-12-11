@@ -5,6 +5,7 @@ import random
 from scipy import sparse
 from scipy.ndimage import uniform_filter
 from scipy.sparse.linalg import spsolve
+import numpy as np
 
 
 class DopamineData:
@@ -221,7 +222,7 @@ class DopamineData:
             pass
 
         fig.update_layout(
-            title=dict(text=f'Dopamine data for {file_name}',   # !!!!!!!
+            title=dict(text=f'Dopamine data for SOME_TEXT',   # !!!!!!!
                     font=dict(size=20),
                     x=0.5,
                     xanchor='center'),
@@ -240,6 +241,7 @@ class DopamineData:
 
         fig.show()
 
+        return fig
 
     def draw_some_peaks(self):
         '''

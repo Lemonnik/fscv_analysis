@@ -1,0 +1,20 @@
+<!-- somewhere up top -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+...
+
+<h3>Line Graph Representation</h3>
+
+<!-- scatter plot goes in this div -->
+<div id='all-pub-graph'></div>
+
+<script type="text/javascript">
+
+        // here is where the JSON gets plugged in via JS
+        var the_pubs_graph = {{pub_lines_JSON | safe}};
+
+        // you target the graph div id in the first arg, 
+        // put your graph in the second, and set the third as {}
+        Plotly.plot("all-pub-graph", the_pubs_graph, {});
+
+</script>

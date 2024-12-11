@@ -3,6 +3,8 @@ from werkzeug.utils import secure_filename
 from dopamineAnalysis import DopamineData
 from parseFile import readDAdata
 import os
+from plotly import utils
+from json import dumps
 
 
 app = Flask(__name__)
@@ -42,12 +44,20 @@ def submit():
         else:
             flash('File opened successfully')
 
+        fig = dopamineData.test_baseline_correction(lam=10**9, 
+                                                    p=0.01, 
+                                                    with_stimuli=True, 
+                                                    corrected_only=False, 
+                                                    method='diff')
+        flash('Graph created')
+
+        fig_to_json = dumps(fig, cls=utils.PlotlyJSONEncoder)
 
 
         # добавить прогресс бар на рендер картинки https://jquery.com/
 
-        return redirect(request.url)
-        return render_template("index.html", data=information)
+        # return redirect(request.url)
+        return render_template("graph.html", pub_lines_JSON=all_pub_json)
 
     return redirect(request.url)
     return render_template("index.html", data=information)
